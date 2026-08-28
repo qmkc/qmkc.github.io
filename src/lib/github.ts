@@ -92,7 +92,6 @@ export async function fetchTopRepos(limit = 6): Promise<GithubRepo[]> {
   );
 
   return repos
-    .filter((r) => !r.fork && !r.archived)
     .sort((a, b) => {
       if (b.stargazers_count !== a.stargazers_count) {
         return b.stargazers_count - a.stargazers_count;
