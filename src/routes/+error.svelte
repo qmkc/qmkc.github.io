@@ -1,9 +1,10 @@
 <script lang="ts">
   import { page } from '$app/state';
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
 
   import CatPawField from '../lib/CatPawField.svelte';
   import PawIcon from '../lib/PawIcon.svelte';
+  import { GITHUB_URL, SITE_TITLE } from '../lib/site';
 
   const notFound = $derived(page.status === 404);
   const message = $derived(
@@ -14,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>{page.status} · qmkc / dev page</title>
+  <title>{page.status} · {SITE_TITLE}</title>
 </svelte:head>
 
 <CatPawField />
@@ -26,13 +27,8 @@
     <h1>{notFound ? '頁面走丟了' : '出了一點問題'}</h1>
     <p class="message">{message}</p>
     <div class="cta-row">
-      <a class="cta primary" href="{base}/">回到首頁</a>
-      <a
-        class="cta ghost"
-        href="https://github.com/qmkc"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a class="cta primary" href={resolve('/')}>回到首頁</a>
+      <a class="cta ghost" href={GITHUB_URL} target="_blank" rel="noreferrer">
         前往 GitHub
       </a>
     </div>

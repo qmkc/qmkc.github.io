@@ -6,10 +6,11 @@
   import Skills from '../lib/Skills.svelte';
   import Projects from '../lib/Projects.svelte';
   import Footer from '../lib/Footer.svelte';
+  import { SITE_TITLE } from '../lib/site';
 </script>
 
 <svelte:head>
-  <title>qmkc / dev page</title>
+  <title>{SITE_TITLE}</title>
 </svelte:head>
 
 <CatPawField />

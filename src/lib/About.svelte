@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { fetchProfile, GITHUB_USER, type GithubProfile } from './github';
+  import { fetchProfile, type GithubProfile } from './github';
+  import { EMAIL, GITHUB_USER } from './site';
 
   let profile = $state<GithubProfile | null>(null);
   let failed = $state(false);
@@ -49,8 +50,8 @@
         <div class="row">
           <dt>email</dt>
           <dd>
-            <a href="mailto:hi@qmkc.dev" class="mono link">
-              <span class="placeholder"> hi@qmkc.dev </span>
+            <a href={`mailto:${EMAIL}`} class="mono link">
+              <span class="placeholder"> {EMAIL} </span>
             </a>
           </dd>
         </div>

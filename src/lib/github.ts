@@ -1,6 +1,7 @@
 import LANGUAGE_COLORS from '../data/lang-color.json';
+import { GITHUB_USER } from './site';
 
-export const GITHUB_USER = 'qmkc';
+export { GITHUB_USER };
 
 export interface GithubRepo {
   id: number;

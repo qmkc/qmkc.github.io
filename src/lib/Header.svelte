@@ -1,19 +1,56 @@
 <script lang="ts">
   import ThemeToggle from './ThemeToggle.svelte';
   import PawIcon from './PawIcon.svelte';
+  import { GITHUB_URL, LOGO_TEXT } from './site';
 
   const links = [
     { href: '#about', label: '關於我', tag: 'about' },
     { href: '#skills', label: '技能', tag: 'skills' },
     { href: '#projects', label: '專案', tag: 'projects' },
   ];
+
+  let logoText = $state('');
+
+  $effect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    let i = 0;
+    let deleting = false;
+
+    const typeSpeed = 180;
+    const deleteSpeed = 90;
+    const pauseAfterType = 5000;
+    const pauseAfterDelete = 500;
+
+    const tick = () => {
+      if (!deleting) {
+        i++;
+        logoText = LOGO_TEXT.slice(0, i);
+        timeoutId = setTimeout(
+          tick,
+          i === LOGO_TEXT.length ? pauseAfterType : typeSpeed,
+        );
+        if (i === LOGO_TEXT.length) deleting = true;
+      } else {
+        i--;
+        logoText = LOGO_TEXT.slice(0, i);
+        timeoutId = setTimeout(tick, i === 0 ? pauseAfterDelete : deleteSpeed);
+        if (i === 0) deleting = false;
+      }
+    };
+
+    timeoutId = setTimeout(tick, typeSpeed);
+
+    return () => clearTimeout(timeoutId);
+  });
 </script>
 
 <header class="glass">
   <div class="bar container">
     <a class="logo" href="#top">
       <span class="paw-icon"><PawIcon size={18} /></span>
-      <span class="logo-text">qmkc<span class="cursor mono">_</span></span>
+      <span class="logo-text" style:min-width={`${LOGO_TEXT.length + 1}ch`}>
+        {logoText}<span class="cursor mono">_</span>
+      </span>
     </a>
     <nav>
       <ul>
@@ -23,12 +60,7 @@
       </ul>
     </nav>
     <div class="actions">
-      <a
-        class="gh-btn mono"
-        href="https://github.com/qmkc"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a class="gh-btn mono" href={GITHUB_URL} target="_blank" rel="noreferrer">
         <svg
           viewBox="0 0 16 16"
           width="16"
@@ -91,6 +123,10 @@
     50% {
       transform: rotate(8deg);
     }
+  }
+
+  .logo-text {
+    display: inline-block;
   }
 
   .cursor {

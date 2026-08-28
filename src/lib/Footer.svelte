@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GITHUB_USER } from './github';
+  import { GITHUB_URL, GITHUB_USER } from './site';
 
   const year = new Date().getFullYear();
 </script>
@@ -8,11 +8,7 @@
   <p class="mono">
     © {year}
     {GITHUB_USER} ·
-    <a
-      href={`https://github.com/${GITHUB_USER}`}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a href={GITHUB_URL} target="_blank" rel="noreferrer">
       GitHub
     </a>
   </p>

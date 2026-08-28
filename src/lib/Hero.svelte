@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GITHUB_USER } from './github';
+  import { GITHUB_URL, GITHUB_USER } from './site';
   import ExternalLinkIcon from './ExternalLinkIcon.svelte';
 
   const avatar = `https://github.com/${GITHUB_USER}.png?size=240`;
@@ -38,7 +38,7 @@
         <a class="cta primary" href="#projects">看看我的專案</a>
         <a
           class="cta ghost"
-          href={`https://github.com/${GITHUB_USER}`}
+          href={GITHUB_URL}
           target="_blank"
           rel="noreferrer"
         >
