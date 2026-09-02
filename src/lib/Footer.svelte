@@ -13,9 +13,9 @@
     <a href={GITHUB_URL} target="_blank" rel="noreferrer"> GitHub </a>
   </p>
   <p class="legal-links mono">
-    <a href={resolve('/privacy')}>隱私權政策</a>
+    <a href={resolve('/privacy-policy')}>隱私權政策</a>
     ·
-    <a href={resolve('/terms')}>服務條款</a>
+    <a href={resolve('/terms-of-service')}>服務條款</a>
   </p>
 </footer>
 
